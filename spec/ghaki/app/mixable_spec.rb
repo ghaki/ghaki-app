@@ -19,7 +19,8 @@ describe Ghaki::App::Mixable do
   end
 
   class TheCow < Ghaki::App::Plugin
-    app_plugin_link Cow, :cow
+    app_plugin_make Cow, :cow
+    app_plugin_link :cow
   end
 
   describe '#app_mixin_reader' do

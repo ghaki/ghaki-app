@@ -39,7 +39,8 @@ describe Ghaki::App::Plugin do
 
     describe 'using source only' do
       class CowSourceOnly < Ghaki::App::Plugin
-        app_plugin_link Cow, :cow
+        app_plugin_make Cow, :cow
+        app_plugin_link :cow
       end
       describe 'generated plugin' do
         subject { CowSourceOnly.instance }
@@ -55,7 +56,8 @@ describe Ghaki::App::Plugin do
 
     describe 'using source and target' do
       class CowSourceAndTarget < Ghaki::App::Plugin
-        app_plugin_link Cow, :cow, :bull
+        app_plugin_make Cow, :cow
+        app_plugin_link :cow, :bull
       end
       describe 'generated plugin' do
         subject { CowSourceAndTarget.instance }

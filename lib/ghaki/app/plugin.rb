@@ -17,9 +17,8 @@ module App   #:nodoc:
   #     end
   #   end
   #
-  #   class WidgetApp
-  #     include Ghaki::App::Plugin
-  #     app_plugin_accessor :widget
+  #   class WidgetApp < Ghaki::App::Plugin
+  #     app_plugin_make Widget, :widget
   #   end
   #
   #   # Default plugin constructor options.
@@ -62,8 +61,7 @@ module App   #:nodoc:
 
     # Links the plugin singleton with the engine singleton.
 
-    def self.app_plugin_link klass, source, target=source
-      app_plugin_make klass, source
+    def self.app_plugin_link source, target=source
       inst = "#{self}.instance"
       Ghaki::App::Engine.class_eval <<-"END"
         def #{target}_defs      ; #{inst}.#{source}_defs      end
