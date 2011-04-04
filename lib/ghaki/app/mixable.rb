@@ -34,17 +34,21 @@ module App   #:nodoc:
 
       def app_mixin_reader klass, source, target=source
         if klass.respond_to?(:instance)
+          class_eval <<-"END"
+            def #{target}
+              @#{target} ||= #{klass}.instance.#{source}
+            end
+          END
           func = :instance
         elsif klass.respond_to?(:new)
-          func = :new
+          class_eval <<-"END"
+            def #{target}
+              @#{target} ||= #{klass}.new
+            end
+          END
         else
           raise ArgumentError, "Unknown Constructor: #{klass}"
         end
-        class_eval <<-"END"
-          def #{target}
-            @#{target} ||= #{klass}.#{func}.#{source}
-          end
-        END
       end
 
       # Generate mixin attribute writer.
