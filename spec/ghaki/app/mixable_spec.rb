@@ -25,7 +25,7 @@ describe Ghaki::App::Mixable do
 
   describe '#app_mixin_reader' do
 
-    describe 'using source only' do
+    context 'using source only' do
       class UsingReaderSourceOnly
         include Ghaki::App::Mixable
         app_mixin_reader TheCow, :cow
@@ -35,7 +35,7 @@ describe Ghaki::App::Mixable do
       it { subject.cow.should be_an_instance_of(Cow) }
     end
 
-    describe 'using source and target' do
+    context 'using source and target' do
       class UsingReaderSourceAndTarget
         include Ghaki::App::Mixable
         app_mixin_reader TheCow, :cow, :bull
@@ -58,7 +58,7 @@ describe Ghaki::App::Mixable do
 
   describe '#app_mixin_accessor' do
 
-    describe 'using source only' do
+    context 'using source only' do
       class UsingAccessorSourceOnly
         include Ghaki::App::Mixable
         app_mixin_accessor Cow, :cow
@@ -68,7 +68,7 @@ describe Ghaki::App::Mixable do
       it { should respond_to :cow= }
     end
     
-    describe 'using source and target' do
+    context 'using source and target' do
       class UsingAccessorSourceAndTarget
         include Ghaki::App::Mixable
         app_mixin_accessor Cow, :cow, :bull

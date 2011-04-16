@@ -6,14 +6,14 @@ describe Ghaki::App::Mixer do
     include Ghaki::App::Mixer
   end
 
-  describe 'class using include' do
+  context 'class using include' do
     subject { TestUsing }
     it { should respond_to :app_engine_eigen_mixin }
     it { should respond_to :app_engine_class_mixin }
     it { should respond_to :app_engine_mixin }
   end
 
-  describe 'using eigen mixin' do
+  context 'using eigen mixin' do
     class TestEigen
       include Ghaki::App::Mixer
       app_engine_eigen_mixin :app_eigen
@@ -22,7 +22,7 @@ describe Ghaki::App::Mixer do
     it { should respond_to :app_eigen }
   end
 
-  describe 'using class mixin' do
+  context 'using class mixin' do
     class TestKlass
       include Ghaki::App::Mixer
       app_engine_class_mixin :app_klass
@@ -31,19 +31,19 @@ describe Ghaki::App::Mixer do
     it { should respond_to :app_klass }
   end
 
-  describe 'using mixed mixin' do
+  context 'using mixed mixin' do
 
     class TestMixed
       include Ghaki::App::Mixer
       app_engine_mixin :app_mixed
     end
 
-    describe 'eigen access' do
+    context 'with eigen access' do
       subject { TestMixed }
       it { should respond_to :app_mixed }
     end
 
-    describe 'class access' do
+    context 'with class access' do
       subject { TestMixed.new }
       it { should respond_to :app_mixed }
     end
