@@ -11,9 +11,9 @@ Gem::Specification.new do |s|
   s.homepage = 'http://github.com/ghaki'
 
   # rubygem setup
-  s.platform = Gem::Platform::RUBY
+  s.platform                  = Gem::Platform::RUBY
   s.required_rubygems_version = '>= 1.3.6'
-  s.ruby_forge_project = s.name
+  s.rubyforge_project         = s.name
 
   # gem dependencies
   s.add_development_dependency 'rspec', '>= 2.4.0'
