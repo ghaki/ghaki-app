@@ -1,15 +1,19 @@
 Gem::Specification.new do |s|
 
   s.name        = 'ghaki-app'
-  s.summary     = 'Ghaki App singleton helpers'
-  s.description = 'Ghaki App is a collection of application singleton libraries.'
+  s.summary     = 'Application singleton helpers'
+  s.description = 'Collection of application singleton libraries.'
 
   s.version = IO.read(File.expand_path('VERSION')).chomp
-  s.required_rubygems_version = '>= 1.3.6'
 
   s.authors  = ['Gerald Kalafut']
   s.email    = 'gerald@kalafut.org'
-  s.homepage = 'http://ghaki.com/'
+  s.homepage = 'http://github.com/ghaki'
+
+  # rubygem setup
+  s.platform = Gem::Platform::RUBY
+  s.required_rubygems_version = '>= 1.3.6'
+  s.ruby_forge_project = s.name
 
   # gem dependencies
   s.add_development_dependency 'rspec', '>= 2.4.0'
@@ -25,5 +29,4 @@ Gem::Specification.new do |s|
   s.test_files = Dir['spec/**/*_spec.rb','*spec/**/*_helper.rb']
 
   s.require_path = 'lib'
-
 end
